@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EventsComponent implements OnInit {
 
-  public events: any;
+  public events: any = [];
 
   constructor(private http: HttpClient) { }
 
@@ -18,9 +18,9 @@ export class EventsComponent implements OnInit {
 
   public getEvents(): void
   {
-    this.http.get('https://localhost:5001/api/event').subscribe(
+    /*this.http.get('https://localhost:5001/api/event').subscribe(
       response => this.events = response,
       error => console.log(error),
-    );
+    );*/
   }
 }
