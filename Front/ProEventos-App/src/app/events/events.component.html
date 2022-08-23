@@ -1,17 +1,25 @@
 <h2>Events</h2>
 <hr>
 
-<form action="" class="form-inline">
+<div class="form-inline">
   <div class="form-group mb-2">
-    <input type="text" class="form-control mr-2" placeholder="search">
-    <button class="btn btn-outline-success">Search</button>
+    <label class="mr-2">Filter: </label>
+    <input type="text" class="form-control mr-2" placeholder="search"
+      [(ngModel)]="filterList"
+    >
   </div>
-</form>
+</div>
+
 <table class="table table-stripped">
   <thead class="thead-dark">
     <tr>
+      <th>
+        <button type="button" class=" btn btn-outline-light btn-sm"
+          (click)="changeImage()">
+          {{!showImage ? 'Show' : 'Hide'}}
+        </button>
+      </th>
       <th>#</th>
-      <th>Image</th>
       <th>Theme</th>
       <th>Local</th>
       <th>Date</th>
@@ -21,15 +29,25 @@
     </tr>
   </thead>
   <tbody *ngIf="events && events.length">
-    <tr *ngFor="let event of events">
+    <tr *ngFor="let event of filteredEvents">
+      <td>
+        <img [collapse]="!showImage"
+             [isAnimated]="true"
+          src="/assets/{{event.imageURL}}"
+          [style.width.px]="widthImage"
+          [style.margin.px]="marginImage"
+        >
+      </td>
       <td>{{event.id}}</td>
-      <td>{{event.imageURL}}</td>
       <td>{{event.theme}}</td>
       <td>{{event.local}}</td>
       <td>{{event.eventDate}}</td>
       <td>{{event.qtdPeople}}</td>
       <td>{{event.batch}}</td>
-      <td>{{event.options}}</td>
+      <td>
+        <button type="button" class="btn btn-primary btn-sm mr-2">Edit</button>
+        <button type="button" class="btn btn-danger btn-sm">Delete</button>
+      </td>
     </tr>
   </tbody>
   <tfoot *ngIf="!events.length">
@@ -40,3 +58,4 @@
     </tr>
   </tfoot>
 </table>
+
