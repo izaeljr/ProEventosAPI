@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ProEventos.Domain;
 
-namespace ProEventos.Persistence
+namespace ProEventos.Persistence.Contexts
 {
     public class ProEventosContext : DbContext
     {
@@ -22,6 +18,10 @@ namespace ProEventos.Persistence
         {
             modelBuilder.Entity<EventSpeaker>().
                 HasKey(ES => new {ES.EventId, ES.SpeakerId});
+
+            modelBuilder.Entity<EventTest>().HasMany(e => e.SocialMedias).WithOne(sm => sm.Event).OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Speaker>().HasMany(s => s.SocialMedias).WithOne(sm => sm.Speaker).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
