@@ -12,13 +12,17 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { EventsComponent } from './events/events.component';
-import { SpeakerComponent } from './speaker/speaker.component';
+import { EventsComponent } from './components/events/events.component';
+import { SpeakerComponent } from './components/speaker/speaker.component';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { NavComponent } from './nav/nav.component';
+import { NavComponent } from './shared/nav/nav.component';
 import {CollapseModule} from 'ngx-bootstrap/collapse';
 import { EventService } from './services/event.service';
 import { DateTimeFormatPipe } from './helpers/DateTimeFormat.pipe';
+import { ContactsComponent } from './components/contacts/contacts.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { TitleComponent } from './shared/title/title.component';
 
 
 @NgModule({
@@ -28,6 +32,10 @@ import { DateTimeFormatPipe } from './helpers/DateTimeFormat.pipe';
       SpeakerComponent,
       NavComponent,
       DateTimeFormatPipe,
+      ContactsComponent,
+      DashboardComponent,
+      ProfileComponent,
+      TitleComponent
    ],
   imports: [
     BrowserModule,
