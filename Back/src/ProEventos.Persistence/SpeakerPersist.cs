@@ -4,6 +4,7 @@ using ProEventos.Domain;
 using ProEventos.Persistence.Contracts;
 using Microsoft.EntityFrameworkCore;
 using ProEventos.Persistence.Contexts;
+using ProEventos.Domain.Identity;
 
 namespace ProEventos.Persistence
 {
@@ -39,7 +40,7 @@ namespace ProEventos.Persistence
                 query = query.Include(s => s.EventSpeakers).ThenInclude(se => se.Event);
             }
 
-            query = query.AsNoTracking().OrderBy(s => s.Id).Where(s => s.Name.ToLower().Contains(name.ToLower()));
+            query = query.AsNoTracking().OrderBy(s => s.Id).Where(s => s.User.FirstName.ToLower().Contains(name.ToLower()) && s.User.LastName.ToLower().Contains(name.ToLower()));
 
             return await query.ToArrayAsync();
         }

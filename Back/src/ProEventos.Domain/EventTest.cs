@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ProEventos.Domain.Identity;
 
 namespace ProEventos.Domain
 {
@@ -15,6 +16,8 @@ namespace ProEventos.Domain
         public string ImageURL { get; set; }
         public string Telephone { get; set; }
         public string Email { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
         public IEnumerable<Lote> Lotes { get; set; }
         public IEnumerable<SocialMedia> SocialMedias { get; set; }
         public IEnumerable<EventSpeaker> EventsSpeakers { get; set; }
